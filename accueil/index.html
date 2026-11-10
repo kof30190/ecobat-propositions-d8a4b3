@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>ECOBAT Concept · Menuiserie, fermetures & protection solaire dans le Gard</title>
+<meta name="description" content="Fenêtres, volets roulants, pergolas bioclimatiques, portails : ECOBAT Concept conçoit et pose sur mesure dans le Gard depuis 2008. Certifié RGE Qualibat, showroom à Brignon.">
+<link rel="icon" href="assets/site/logo-ecobat.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Phudu:wght@500;700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+:root {
+  --sc-canvas: #F3F4F1;
+  --sc-surface: #FFFFFF;
+  --sc-ink: #0B1E2C;
+  --sc-ink-soft: #46596A;
+  --sc-accent: #FF7700;
+  --sc-accent-ink: #0B1E2C;
+  --sc-font-display: "Phudu", "Arial Narrow", system-ui, sans-serif;
+  --sc-font-text: "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+  --navy: #00233A;
+  --navy-2: #032E4B;
+  --bone: #F4EFE6;
+  --orange-deep: #B04C00; /* l'orange lisible sur fond clair */
+  --line: rgba(244, 239, 230, .86);
+  --line-soft: rgba(244, 239, 230, .3);
+  --bar-h: 72px;
+}
+body { background: var(--sc-canvas); }
+img { display: block; }
+.dark { background: var(--navy); --sc-ink: #F4EFE6; --sc-ink-soft: #A9BBC9; color: var(--sc-ink); }
+.dark a { color: inherit; }
+.accent-text { color: var(--orange-deep); }
+.dark .accent-text { color: var(--sc-accent); }
+.display { font-family: var(--sc-font-display); font-weight: 800; letter-spacing: -0.01em; line-height: .95; text-transform: uppercase; text-wrap: balance; margin: 0; }
+.kicker { font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: var(--sc-t-sm); }
+.btn { display: inline-flex; align-items: center; gap: .6em; font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 1rem; padding: .95em 1.5em; border-radius: 4px; background: var(--sc-accent); color: var(--navy) !important; text-decoration: none; white-space: nowrap; box-shadow: 0 10px 24px -12px rgba(176, 76, 0, .7); transition: transform 140ms var(--sc-ease-out), background-color 160ms var(--sc-ease-out); }
+.btn:hover { background: #FF8A24; }
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn--ghost { background: transparent; box-shadow: inset 0 0 0 2px currentColor; color: inherit !important; }
+.btn--ghost:hover { background: rgba(255,255,255,.08); }
+.link-arrow { font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; text-decoration: none; border-bottom: 2px solid var(--sc-accent); padding-bottom: 2px; }
+.wrap { width: min(100% - 2 * var(--sc-gutter), 1280px); margin-inline: auto; }
+
+/* ───────── barre ───────── */
+.bar { position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--bar-h); display: flex; align-items: center; gap: 1.5rem; padding-inline: var(--sc-gutter); background: rgba(255,255,255,.94); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); box-shadow: 0 1px 0 rgba(11,30,44,.08); color: var(--sc-ink); }
+.bar__logo img { height: 46px; width: auto; }
+.bar__nav { display: flex; gap: .25rem; margin-inline: auto; }
+.bar__item { position: relative; }
+.bar__item > a { display: block; padding: .6rem .7rem; font-family: var(--sc-font-display); font-weight: 700; font-size: .92rem; letter-spacing: .03em; text-transform: uppercase; text-decoration: none; color: var(--sc-ink); border-radius: 4px; }
+.bar__item > a:hover, .bar__item:focus-within > a { color: var(--orange-deep); }
+.bar__menu { position: absolute; top: 100%; left: 0; min-width: 260px; padding: .6rem; margin: 0; list-style: none; background: #fff; border-radius: 6px; box-shadow: var(--sc-e3); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 160ms var(--sc-ease-out), transform 160ms var(--sc-ease-out), visibility 0s 160ms; }
+.bar__item:hover .bar__menu, .bar__item:focus-within .bar__menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.bar__menu a { display: block; padding: .45rem .6rem; text-decoration: none; color: var(--sc-ink); border-radius: 4px; }
+.bar__menu a:hover { background: var(--sc-canvas); color: var(--orange-deep); }
+.bar__tel { font-family: var(--sc-font-display); font-weight: 700; text-decoration: none; color: var(--sc-ink); white-space: nowrap; }
+.bar .btn { padding: .7em 1.1em; font-size: .92rem; }
+.bar__burger { display: none; }
+@media (max-width: 1180px) {
+  .bar__nav { display: none; }
+  .bar__tel { margin-left: auto; }
+  .bar__burger { display: block; }
+  .bar__burger summary { list-style: none; cursor: pointer; font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; padding: .6rem .8rem; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--sc-ink); }
+  .bar__burger summary::-webkit-details-marker { display: none; }
+  .bar__burger[open] .bar__drawer { display: block; }
+  .bar__drawer { display: none; position: fixed; top: var(--bar-h); left: 0; right: 0; bottom: 0; overflow: auto; background: #fff; padding: 1rem var(--sc-gutter) 3rem; }
+  .bar__drawer h3 { font-family: var(--sc-font-display); text-transform: uppercase; margin: 1.2rem 0 .3rem; font-size: 1.1rem; }
+  .bar__drawer h3 a { color: var(--sc-ink); text-decoration: none; }
+  .bar__drawer ul { list-style: none; margin: 0; padding: 0; columns: 2; }
+  .bar__drawer li a { display: block; padding: .35rem 0; color: var(--sc-ink-soft); text-decoration: none; }
+}
+@media (max-width: 640px) {
+  :root { --bar-h: 62px; }
+  .bar { gap: .6rem; }
+  .bar__logo img { height: 38px; }
+  .bar__tel span { display: none; }
+  .bar .btn { padding: .6em .8em; font-size: .82rem; }
+}
+
+/* ───────── 1 · ouverture en profondeur ───────── */
+.hero .sc-stage { background: #2a5d93; }
+.hero__plane { position: absolute; inset: -4% -2% -6%; width: 104%; height: 110%; max-width: none; object-fit: cover; object-position: 62% 60%; will-change: transform; }
+.hero__sky   { z-index: 0; transform: translate3d(0, calc(var(--sc-p, 0) * -3%), 0) scale(1.02); }
+.hero__house { z-index: 3; transform: translate3d(0, calc(var(--sc-p, 0) * -9%), 0) scale(calc(1 + var(--sc-p, 0) * .05)); transform-origin: 62% 92%; }
+.hero__front { z-index: 4; transform: translate3d(0, calc(var(--sc-p, 0) * -18%), 0) scale(calc(1.02 + var(--sc-p, 0) * .1)); transform-origin: 50% 100%; }
+.hero__floor { position: absolute; inset: auto 0 0 0; height: 26%; background: linear-gradient(to top, var(--navy) 0%, rgba(0,35,58,0) 100%); opacity: calc(var(--sc-p, 0) * 1.4); z-index: 5; pointer-events: none; }
+.hero__copy { position: absolute; z-index: 2; left: var(--sc-gutter); top: calc(var(--bar-h) + clamp(1.5rem, 5vh, 4rem)); width: min(64rem, 70vw); color: #fff; transform: translate3d(0, calc(var(--sc-p, 0) * -4%), 0); }
+.hero h1 { margin: 0; }
+.hero__kicker { display: block; font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; font-size: clamp(.95rem, 1.2vw, 1.15rem); margin-bottom: .9rem; color: #fff; }
+.hero__big { display: block; font-family: var(--sc-font-display); font-weight: 900; text-transform: uppercase; line-height: .86; letter-spacing: -.015em; font-size: clamp(3.4rem, 8.4vw, 9.4rem); text-shadow: 0 6px 30px rgba(0, 20, 45, .25); }
+.hero__big em { font-style: normal; color: var(--sc-accent); }
+.hero__cta { position: absolute; z-index: 6; left: var(--sc-gutter); bottom: clamp(1.5rem, 6vh, 3.5rem); display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; color: #fff; }
+.hero__cta p { margin: 0; max-width: 30ch; font-size: 1.12rem; line-height: 1.4; font-weight: 600; text-shadow: 0 1px 12px rgba(0,0,0,.55); }
+.hero__note { display: flex; align-items: center; gap: .6rem; background: rgba(255,255,255,.95); color: var(--sc-ink); padding: .5rem .8rem; border-radius: 4px; text-decoration: none; font-weight: 700; }
+.hero__note img { height: 22px; width: auto; }
+.hero__ctabg { position: absolute; z-index: 5; inset: auto 0 0 0; height: 40%; background: linear-gradient(to top, rgba(6, 16, 24, .82) 0%, rgba(6, 16, 24, .55) 45%, rgba(6, 16, 24, 0) 100%); pointer-events: none; }
+.hero__scrim { position: absolute; z-index: 1; inset: 0 30% 40% 0; background: radial-gradient(120% 100% at 0% 0%, rgba(0, 28, 56, .62) 0%, rgba(0, 28, 56, .35) 45%, rgba(0, 28, 56, 0) 80%); pointer-events: none; }
+@media (max-width: 760px) {
+  .hero__plane { object-position: 70% 62%; inset: -2% -2% -4%; height: 106%; }
+  .hero__copy { width: auto; right: var(--sc-gutter); }
+  .hero__big { font-size: clamp(2.9rem, 14vw, 4.4rem); }
+  .hero__cta p { font-size: 1rem; }
+  .hero__ctabg { height: 58%; }
+}
+
+/* ───────── 2 · bascule ───────── */
+.pivot { padding: clamp(6rem, 18vh, 12rem) 0 clamp(4rem, 12vh, 8rem); }
+.pivot__line { font-family: var(--sc-font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(2.4rem, 5.6vw, 6rem); line-height: .95; letter-spacing: -.01em; max-width: 16ch; margin: 0; text-wrap: balance; }
+.pivot__line span { color: var(--sc-accent); }
+.pivot__sub { margin: 2rem 0 0 auto; max-width: 34ch; font-size: 1.25rem; color: var(--sc-ink-soft); }
+
+/* ───────── 3 · plan de pose (le pic) ───────── */
+.plan .sc-stage { background: var(--navy); color: var(--bone); display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem); grid-template-rows: 1fr auto; gap: 0 clamp(1rem, 2.5vw, 2.5rem); padding: calc(var(--bar-h) + 1.5rem) var(--sc-gutter) 1.5rem; box-sizing: border-box;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 40px 40px; }
+.plan__draw { grid-row: 1 / 3; align-self: center; position: relative; min-height: 0; }
+.plan__draw svg { width: 100%; height: auto; max-height: calc(100svh - var(--bar-h) - 4rem); display: block; overflow: visible; }
+.plan__side { grid-column: 2; align-self: center; position: relative; min-height: 22rem; }
+.plan__title { font-family: var(--sc-font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(1.6rem, 2.3vw, 2.3rem); line-height: .98; margin: 0 0 1.4rem; }
+.plan__steps { position: relative; min-height: 15rem; }
+.step { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(14px); transition: opacity 260ms var(--sc-ease-out), transform 260ms var(--sc-ease-out); pointer-events: none; }
+.step.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.step h3 { font-family: var(--sc-font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(2.2rem, 3.6vw, 3.6rem); line-height: .9; margin: 0 0 .8rem; color: var(--sc-accent); }
+.step p { margin: 0 0 1.1rem; font-size: 1.1rem; line-height: 1.5; color: #D9E2E8; max-width: 34ch; }
+.step .link-arrow { color: var(--bone); }
+.cartouche { grid-column: 2; align-self: end; border: 1px solid var(--line-soft); font-size: .86rem; }
+.cartouche__row { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem .75rem; border-top: 1px solid var(--line-soft); }
+.cartouche__row:first-child { border-top: 0; }
+.cartouche b { font-family: var(--sc-font-display); text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+.cartouche ol { list-style: none; margin: 0; padding: .4rem .75rem .6rem; display: grid; grid-template-columns: 1fr 1fr; gap: .25rem 1rem; border-top: 1px solid var(--line-soft); }
+.cartouche li { display: flex; gap: .5rem; align-items: center; color: #B9C7D2; transition: color 200ms; }
+.cartouche li i { width: .8rem; height: .8rem; border: 1.5px solid currentColor; border-radius: 2px; flex: none; transition: background-color 200ms; }
+.cartouche li.is-done { color: var(--bone); }
+.cartouche li.is-done i { background: var(--sc-accent); border-color: var(--sc-accent); }
+.season { display: inline-flex; border: 1px solid var(--line-soft); border-radius: 3px; overflow: hidden; }
+.season button { font: inherit; font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--bone); background: transparent; border: 0; padding: .3rem .65rem; cursor: pointer; }
+.season button[aria-pressed="true"] { background: var(--sc-accent); color: var(--navy); }
+.season button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: -2px; }
+/* svg */
+.plan svg { --t-sun: 0; }
+.ln { fill: none; stroke: var(--line); stroke-width: 2.4; stroke-linejoin: round; }
+.ln-thin { fill: none; stroke: var(--line-soft); stroke-width: 1.2; }
+.ln-old { fill: none; stroke: var(--line-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+.hatch { fill: url(#hatchStone); }
+.part { transition: none; }
+.part .ln-new { fill: none; stroke: var(--bone); stroke-width: 3.6; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.part.is-active .ln-new, .part.is-active .slat, .part.is-active .lame { stroke: var(--sc-accent); }
+.part.is-active .lame { fill: var(--sc-accent); }
+.glass { fill: #8FB6D1; opacity: 0; }
+.slat { stroke: var(--bone); stroke-width: 1.3; }
+.tablier { fill: rgba(0, 35, 58, .92); }
+.lame { fill: var(--bone); stroke: none; }
+.ray { stroke: #FFC56B; stroke-width: 7; opacity: .0; stroke-linecap: round; }
+.tag { font-family: var(--sc-font-display); font-weight: 700; font-size: 17px; letter-spacing: .08em; fill: var(--sc-accent); text-transform: uppercase; opacity: 0; transition: opacity 200ms; }
+.part.is-active .tag, .part.is-done .tag { opacity: 1; }
+.part.is-done .tag { fill: var(--bone); opacity: .55; }
+.sun { fill: #FFB547; }
+[data-season="hiver"] .sun { fill: #F7E3B0; }
+.sky-glow { opacity: .55; }
+.plan__winter { opacity: 0; }
+[data-season="hiver"] .plan__winter { opacity: 1; }
+
+@media (max-width: 900px) {
+  .plan .sc-stage { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; padding-top: calc(var(--bar-h) + 1rem); gap: .5rem; }
+  .plan__draw { grid-row: 1; }
+  .plan__draw { overflow: hidden; margin-inline: calc(-1 * var(--sc-gutter)); height: 40svh; display: flex; align-items: center; }
+  .plan__draw svg { width: 100%; max-height: none; transform-origin: 0 50%; transition: transform 700ms var(--sc-ease-out); }
+  .plan__side { grid-column: 1; grid-row: 2; min-height: 12rem; align-self: start; padding-top: .5rem; }
+  .plan__title { font-size: 1.3rem; margin-bottom: .6rem; }
+  .plan__steps { min-height: 10rem; }
+  .step h3 { font-size: 2rem; }
+  .step p { font-size: 1rem; margin-bottom: .6rem; }
+  .cartouche { grid-column: 1; grid-row: 3; font-size: .78rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plan { height: auto !important; }
+  .plan .sc-stage { position: relative; height: auto; min-height: 100svh; }
+  .plan__steps { min-height: 0; }
+  .step { position: static; opacity: 1; transform: none; margin-bottom: 1.4rem; pointer-events: auto; }
+  .step h3 { font-size: 1.8rem; }
+}
+
+/* ───────── 4 · preuves + qui sommes-nous ───────── */
+.proof { padding: clamp(5rem, 12vh, 9rem) 0 clamp(4rem, 10vh, 7rem); }
+.proof__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2.5rem clamp(1rem, 3vw, 3rem); align-items: end; }
+.fig { grid-column: span 3; border-top: 3px solid var(--sc-ink); padding-top: 1rem; }
+.fig__n { font-family: var(--sc-font-display); font-weight: 900; font-size: clamp(3.6rem, 7vw, 7.5rem); line-height: .85; letter-spacing: -.02em; display: block; font-variant-numeric: tabular-nums; }
+.fig__n small { font-size: .42em; letter-spacing: 0; }
+.fig p { margin: .6rem 0 0; color: var(--sc-ink-soft); font-size: 1.05rem; }
+.fig--big { grid-column: span 4; }
+.fig--big .fig__n { font-size: clamp(5rem, 11vw, 11rem); color: var(--orange-deep); }
+.fig--small { grid-column: span 2; }
+.about { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 6rem); align-items: center; margin-top: clamp(5rem, 12vh, 9rem); }
+.about__img { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 5 / 4; box-shadow: var(--sc-e2); }
+.about__img img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; }
+.about h2 { font-size: clamp(2.4rem, 4.4vw, 4.4rem); margin-bottom: 1.4rem; }
+.about p { font-size: 1.15rem; line-height: 1.6; max-width: 48ch; margin: 0 0 1rem; color: var(--sc-ink-soft); }
+.about p strong { color: var(--sc-ink); }
+.strong-points { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(4rem, 10vh, 7rem); border-block: 1px solid rgba(11,30,44,.14); }
+.sp { display: flex; gap: 1rem; align-items: center; padding: 1.5rem 1.2rem; border-left: 1px solid rgba(11,30,44,.14); }
+.sp:first-child { border-left: 0; padding-left: 0; }
+.sp img { width: 52px; height: 52px; object-fit: contain; flex: none; }
+.sp b { display: block; font-family: var(--sc-font-display); text-transform: uppercase; font-size: 1.15rem; line-height: 1; }
+.sp span { color: var(--sc-ink-soft); font-size: .95rem; }
+@media (max-width: 900px) {
+  .fig, .fig--big, .fig--small { grid-column: span 6; }
+  .about { grid-template-columns: 1fr; }
+  .strong-points { grid-template-columns: 1fr 1fr; }
+  .sp { border-left: 0; padding-left: 0; }
+}
+
+/* ───────── 5 · accompagnement ───────── */
+.care { padding: clamp(5rem, 12vh, 9rem) 0; }
+.care__head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: clamp(2.5rem, 6vh, 4rem); }
+.care__head h2 { font-size: clamp(2.6rem, 5vw, 5.4rem); max-width: 12ch; }
+.care__head p { max-width: 40ch; font-size: 1.12rem; color: var(--sc-ink-soft); margin: 0; }
+.care__list { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2vw, 1.75rem); }
+.care__item { display: block; text-decoration: none; color: inherit; }
+.care__item:nth-child(even) { margin-top: clamp(2rem, 7vh, 5rem); }
+.care__img { aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: var(--navy-2); }
+.care__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--sc-ease-out); }
+.care__item:hover .care__img img { transform: scale(1.04); }
+.care__item h3 { font-family: var(--sc-font-display); text-transform: uppercase; font-size: 1.5rem; line-height: 1; margin: 1.1rem 0 .4rem; }
+.care__item q { display: block; color: var(--sc-ink-soft); font-size: 1.08rem; quotes: "« " " »"; }
+.care__item .link-arrow { display: inline-block; margin-top: .8rem; font-size: .9rem; }
+@media (max-width: 900px) { .care__list { grid-template-columns: 1fr 1fr; } }
+
+/* ───────── 6 · réalisations ───────── */
+.works .sc-stage { background: var(--bone); display: flex; align-items: center; }
+.rail { display: flex; gap: clamp(1rem, 2vw, 2rem); padding-inline: var(--sc-gutter); align-items: stretch; padding-top: var(--bar-h); }
+.rail__lead { flex: 0 0 clamp(18rem, 30vw, 30rem); display: flex; flex-direction: column; justify-content: center; }
+.rail__lead h2 { font-size: clamp(2.8rem, 5.4vw, 6rem); margin-bottom: 1.2rem; }
+.rail__lead p { color: var(--sc-ink-soft); font-size: 1.12rem; max-width: 30ch; margin: 0; }
+.fiche { flex: 0 0 clamp(17rem, 28vw, 27rem); display: flex; flex-direction: column; text-decoration: none; color: var(--sc-ink); background: #fff; border-radius: 6px; overflow: hidden; box-shadow: var(--sc-e2); }
+.fiche__img { aspect-ratio: 4 / 3.4; overflow: hidden; }
+.fiche__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--sc-ease-out); }
+.fiche:hover .fiche__img img { transform: scale(1.04); }
+.fiche__label { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; padding: 1rem 1.1rem 1.2rem; font-size: .95rem; border-top: 3px solid var(--sc-accent); }
+.fiche__label dt { font-family: var(--sc-font-display); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; color: var(--sc-ink-soft); padding-top: .15rem; }
+.fiche__label dd { margin: 0; font-weight: 600; }
+.fiche__label dd.commune { font-family: var(--sc-font-display); font-weight: 800; text-transform: uppercase; font-size: 1.3rem; line-height: 1; }
+.rail__end { flex: 0 0 clamp(16rem, 24vw, 22rem); display: flex; flex-direction: column; justify-content: center; gap: 1.2rem; padding-right: var(--sc-gutter); }
+.rail__end .fig__n { color: var(--orange-deep); }
+@media (prefers-reduced-motion: no-preference) {
+  .fiche { opacity: calc(.55 + .45 * min(1, max(0, (var(--sc-p, 0) * 9 - var(--i, 0) + 1.2)))); }
+}
+
+/* ───────── 7 · avis, partenaires, infos, faq ───────── */
+.voices { padding: clamp(5rem, 12vh, 9rem) 0; }
+.voices__top { display: grid; grid-template-columns: auto 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.score { position: sticky; top: calc(var(--bar-h) + 2rem); }
+.score .fig__n { font-size: clamp(6rem, 12vw, 11rem); color: var(--sc-accent); }
+.score p { margin: .4rem 0 1.2rem; color: var(--sc-ink-soft); font-size: 1.1rem; }
+.stars { color: var(--sc-accent); letter-spacing: .15em; font-size: 1.4rem; }
+.reviews { display: grid; gap: 1.5rem; }
+.review { background: var(--navy-2); border-radius: 6px; padding: 1.75rem 2rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+.review:nth-child(2) { margin-left: clamp(0rem, 6vw, 6rem); }
+.review blockquote { margin: .8rem 0 1rem; font-size: 1.25rem; line-height: 1.5; }
+.review footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; color: var(--sc-ink-soft); font-size: .95rem; }
+.review footer b { color: var(--sc-ink); font-family: var(--sc-font-display); text-transform: uppercase; letter-spacing: .04em; }
+.review .stars { font-size: 1rem; }
+.partners { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; padding: 2.5rem 2rem; margin-top: clamp(4rem, 10vh, 6rem); background: #fff; border-radius: 6px; }
+.partners img { height: 64px; width: auto; }
+.partners h2 { font-family: var(--sc-font-display); text-transform: uppercase; font-size: 1.1rem; color: var(--sc-ink); margin: 0; letter-spacing: .06em; }
+.news { padding: clamp(5rem, 12vh, 8rem) 0 clamp(3rem, 8vh, 5rem); }
+.news__head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.news__head h2 { font-size: clamp(2.4rem, 4.4vw, 4.4rem); }
+.news__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 1.5rem; }
+.post { text-decoration: none; color: var(--sc-ink); display: flex; flex-direction: column; gap: .8rem; }
+.post:first-child { grid-row: span 2; }
+.post__img { border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 10; }
+.post:first-child .post__img { aspect-ratio: auto; flex: 1; min-height: 20rem; }
+.post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--sc-ease-out); }
+.post:hover img { transform: scale(1.04); }
+.post h3 { font-family: var(--sc-font-display); text-transform: uppercase; font-size: 1.25rem; line-height: 1.05; margin: 0; }
+.post:first-child h3 { font-size: 1.9rem; }
+.faq { padding: clamp(3rem, 8vh, 6rem) 0 clamp(5rem, 12vh, 8rem); }
+.faq__grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(2rem, 6vw, 6rem); }
+.faq h2 { font-size: clamp(2.4rem, 4.4vw, 4.4rem); position: sticky; top: calc(var(--bar-h) + 2rem); }
+.faq details { border-top: 1px solid rgba(11,30,44,.16); }
+.faq details:last-child { border-bottom: 1px solid rgba(11,30,44,.16); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; font-family: var(--sc-font-display); font-weight: 700; text-transform: uppercase; font-size: 1.2rem; line-height: 1.15; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--orange-deep); font-size: 1.6rem; line-height: .8; transition: transform 160ms var(--sc-ease-out); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin: 0 0 1.4rem; color: var(--sc-ink-soft); font-size: 1.08rem; line-height: 1.6; max-width: 62ch; }
+@media (max-width: 900px) {
+  .voices__top, .faq__grid { grid-template-columns: 1fr; }
+  .score, .faq h2 { position: static; }
+  .news__grid { grid-template-columns: 1fr 1fr; }
+  .post:first-child { grid-column: span 2; grid-row: auto; }
+  .review:nth-child(2) { margin-left: 0; }
+  .partners { justify-content: center; }
+  .partners img { height: 48px; }
+}
+
+/* ───────── 8 · devis ───────── */
+.close .sc-stage { background: var(--sc-accent); color: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: var(--bar-h) var(--sc-gutter) 0; box-sizing: border-box; }
+.bon { width: min(100%, 1280px); margin-inline: auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: end; flex: 1; align-content: center; }
+.bon h2 { font-family: var(--sc-font-display); font-weight: 900; text-transform: uppercase; font-size: clamp(3rem, 7.4vw, 8rem); line-height: .86; letter-spacing: -.015em; margin: 0; }
+.bon__form { border: 2px solid var(--navy); border-radius: 6px; padding: 1.4rem 1.5rem; background: rgba(255,255,255,.18); }
+.bon__row { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid rgba(0,35,58,.35); font-size: 1.05rem; }
+.bon__row b { font-family: var(--sc-font-display); text-transform: uppercase; letter-spacing: .05em; }
+.bon__form .btn { background: var(--navy); color: #fff !important; margin-top: 1.3rem; width: 100%; justify-content: center; font-size: 1.1rem; box-shadow: 0 14px 30px -14px rgba(0,35,58,.8); }
+.bon__form .btn:hover { background: #063a5e; }
+.bon__tel { display: block; text-align: center; margin-top: .9rem; font-family: var(--sc-font-display); font-weight: 800; font-size: 1.4rem; color: var(--navy); text-decoration: none; }
+.foot { width: min(100%, 1280px); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem 2rem; flex-wrap: wrap; padding: 1.2rem 0 1.4rem; border-top: 1px solid rgba(0,35,58,.3); font-size: .92rem; }
+.foot nav { display: flex; gap: 1rem; flex-wrap: wrap; }
+.foot a { color: var(--navy); }
+@media (max-width: 900px) {
+  .bon { grid-template-columns: 1fr; align-items: start; }
+}
+:focus-visible { outline: 3px solid var(--sc-accent); outline-offset: 3px; }
+.close :focus-visible { outline-color: var(--navy); }
+</style>
+</head>
+<body>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <a class="bar__logo" href="https://ecobat-concept.fr/" aria-label="ECOBAT Concept, accueil"><img src="assets/site/logo-ecobat.png" alt="ECOBAT Concept" width="160" height="62"></a>
+  <nav class="bar__nav" aria-label="Navigation principale">
+    <div class="bar__item"><a href="https://ecobat-concept.fr/menuiserie">Menuiserie</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/menuiserie/fenetres">Fenêtres</a></li><li><a href="https://ecobat-concept.fr/menuiserie/portes-d-entree">Portes d'entrée</a></li><li><a href="https://ecobat-concept.fr/menuiserie/verandas">Vérandas</a></li><li><a href="https://ecobat-concept.fr/menuiserie/volet-roulant">Volet roulant</a></li><li><a href="https://ecobat-concept.fr/menuiserie/volets-battants-coulissants">Volets battants, coulissants</a></li></ul></div>
+    <div class="bar__item"><a href="https://ecobat-concept.fr/fermeture">Fermeture</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/fermeture/gamme-harmonie">Gamme Harmonie</a></li><li><a href="https://ecobat-concept.fr/fermeture/portails-battants-et-portillons-1">Portails battants et portillons</a></li><li><a href="https://ecobat-concept.fr/fermeture/portail-coulissant-et-portillons">Portails coulissants et portillons</a></li><li><a href="https://ecobat-concept.fr/fermeture/porte-de-garage-enroulable">Porte de garage enroulable</a></li><li><a href="https://ecobat-concept.fr/fermeture/porte-de-garage-sectionnelle">Porte de garage sectionnelle</a></li><li><a href="https://ecobat-concept.fr/fermeture/porte-de-garage-basculante">Porte de garage basculante</a></li><li><a href="https://ecobat-concept.fr/fermeture/clotures">Clôtures</a></li><li><a href="https://ecobat-concept.fr/fermeture/portes-industrielles-rideaux-grilles">Portes industrielles, rideaux, grilles</a></li></ul></div>
+    <div class="bar__item"><a href="https://ecobat-concept.fr/protection-solaire">Protection solaire</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/protection-solaire/pergolas-bioclimatiques">Pergolas bioclimatiques</a></li><li><a href="https://ecobat-concept.fr/protection-solaire/stores-exterieurs">Stores extérieurs</a></li><li><a href="https://ecobat-concept.fr/protection-solaire/stores-interieurs">Stores intérieurs</a></li><li><a href="https://ecobat-concept.fr/protection-solaire/moustiquaires">Moustiquaires</a></li></ul></div>
+    <div class="bar__item"><a href="https://ecobat-concept.fr/realisations">Réalisations</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/realisations/pergolas">Pergolas</a></li><li><a href="https://ecobat-concept.fr/realisations/realisations-fenetres">Fenêtres</a></li><li><a href="https://ecobat-concept.fr/realisations/realisations-volets">Volets</a></li><li><a href="https://ecobat-concept.fr/realisations/portails">Portails</a></li><li><a href="https://ecobat-concept.fr/realisations/portes-de-garage">Portes de garage</a></li><li><a href="https://ecobat-concept.fr/realisations">Toutes les réalisations</a></li></ul></div>
+    <div class="bar__item"><a href="https://ecobat-concept.fr/choisir-ecobat">Choisir Ecobat</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/choisir-ecobat/la-societe">La société</a></li><li><a href="https://ecobat-concept.fr/choisir-ecobat/equipe">L'équipe</a></li><li><a href="https://ecobat-concept.fr/choisir-ecobat/votre-projet">Votre projet</a></li><li><a href="https://ecobat-concept.fr/choisir-ecobat/garanties">Garanties</a></li><li><a href="https://ecobat-concept.fr/choisir-ecobat/financements-et-aides">Financement</a></li><li><a href="https://ecobat-concept.fr/faq">FAQ</a></li><li><a href="https://ecobat-concept.fr/blog">Blog</a></li><li><a href="https://ecobat-concept.fr/bonnes-affaires">Le coin des bonnes affaires</a></li><li><a href="https://revelhome.app/connexion?slug=ecobat-concept">Espace client</a></li></ul></div>
+    <div class="bar__item"><a href="https://ecobat-concept.fr/prestige-design">Prestige design</a>
+      <ul class="bar__menu"><li><a href="https://ecobat-concept.fr/prestige-design/les-cuisines-exterieures">Cuisines extérieures</a></li><li><a href="https://ecobat-concept.fr/prestige-design/les-garden-room">Garden rooms</a></li><li><a href="https://ecobat-concept.fr/prestige-design/le-garde-corps-en-verre">Garde-corps en verre</a></li><li><a href="https://ecobat-concept.fr/prestige-design/les-carports">Carports</a></li><li><a href="https://ecobat-concept.fr/prestige-design/les-rideaux-de-verre">Rideaux de verre</a></li></ul></div>
+  </nav>
+  <a class="bar__tel" href="tel:0466306953">☎ <span>04 66 30 69 53</span></a>
+  <a class="btn" href="https://ecobat-concept.fr/contact">Devis gratuit</a>
+  <details class="bar__burger">
+    <summary>Menu</summary>
+    <div class="bar__drawer">
+      <h3><a href="https://ecobat-concept.fr/menuiserie">Menuiserie</a></h3><ul><li><a href="https://ecobat-concept.fr/menuiserie/fenetres">Fenêtres</a></li><li><a href="https://ecobat-concept.fr/menuiserie/portes-d-entree">Portes d'entrée</a></li><li><a href="https://ecobat-concept.fr/menuiserie/verandas">Vérandas</a></li><li><a href="https://ecobat-concept.fr/menuiserie/volet-roulant">Volet roulant</a></li></ul>
+      <h3><a href="https://ecobat-concept.fr/fermeture">Fermeture</a></h3><ul><li><a href="https://ecobat-concept.fr/fermeture/portail-coulissant-et-portillons">Portails</a></li><li><a href="https://ecobat-concept.fr/fermeture/porte-de-garage-enroulable">Portes de garage</a></li><li><a href="https://ecobat-concept.fr/fermeture/clotures">Clôtures</a></li></ul>
+      <h3><a href="https://ecobat-concept.fr/protection-solaire">Protection solaire</a></h3><ul><li><a href="https://ecobat-concept.fr/protection-solaire/pergolas-bioclimatiques">Pergolas bioclimatiques</a></li><li><a href="https://ecobat-concept.fr/protection-solaire/stores-exterieurs">Stores extérieurs</a></li><li><a href="https://ecobat-concept.fr/protection-solaire/moustiquaires">Moustiquaires</a></li></ul>
+      <h3><a href="https://ecobat-concept.fr/realisations">Réalisations</a></h3>
+      <h3><a href="https://ecobat-concept.fr/choisir-ecobat">Choisir Ecobat</a></h3><ul><li><a href="https://ecobat-concept.fr/choisir-ecobat/financements-et-aides">Financement</a></li><li><a href="https://ecobat-concept.fr/faq">FAQ</a></li><li><a href="https://ecobat-concept.fr/blog">Blog</a></li><li><a href="https://revelhome.app/connexion?slug=ecobat-concept">Espace client</a></li></ul>
+      <h3><a href="https://ecobat-concept.fr/prestige-design">Prestige design</a></h3>
+    </div>
+  </details>
+</header>
+
+<main id="top">
+
+  <!-- 1 · OUVERTURE : plans en profondeur -->
+  <section class="hero" data-sc-act="pin" data-sc-span="1.7">
+    <div data-sc-stage>
+      <img class="hero__plane hero__sky" src="assets/hero-sky.webp" width="2400" height="1350" alt="" fetchpriority="high">
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__copy" data-sc-cue="0 0.82 0 0.3">
+        <h1>
+          <span class="hero__kicker">Menuiserie, fermetures &amp; protection solaire dans le Gard</span>
+          <span class="hero__big">Toute la maison. <em>Un seul artisan.</em></span>
+        </h1>
+      </div>
+      <img class="hero__plane hero__house" src="assets/hero-house.webp" width="2400" height="1350" alt="Mas gardois rénové avec menuiseries aluminium, volets roulants, pergola bioclimatique et portail coulissant" fetchpriority="high">
+      <img class="hero__plane hero__front" src="assets/hero-front.webp" width="2400" height="1350" alt="">
+      <div class="hero__ctabg" aria-hidden="true"></div>
+      <div class="hero__floor" aria-hidden="true"></div>
+      <div class="hero__cta" data-sc-cue="0 0.7 0 0.3">
+        <p>Fenêtres, volets, pergolas, portails : conçus et posés par nos équipes, certifiées RGE Qualibat depuis 2008.</p>
+        <a class="btn" href="https://ecobat-concept.fr/contact">Devis gratuit</a>
+        <a class="hero__note" href="https://ecobat-concept.fr/choisir-ecobat/temoignages"><img src="assets/site/avis-google.png" alt="Avis Google" width="60" height="22">4,8/5 <span class="stars" aria-hidden="true">★★★★★</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · BASCULE : une phrase, le silence avant le pic -->
+  <section class="pivot dark">
+    <div class="wrap" data-sc-in data-sc-stagger="80">
+      <p class="pivot__line" data-sc-kinetic="lines">Une maison, ce sont des ouvertures. <span>On les pose toutes.</span></p>
+      <p class="pivot__sub">Faites défiler : vous équipez la façade vous-même, élément par élément.</p>
+    </div>
+  </section>
+
+  <!-- 3 · LE PIC : plan de pose piloté par le scroll -->
+  <section class="plan" id="plan" data-sc-act="pin" data-sc-span="5.4" data-season="ete">
+    <div data-sc-stage>
+      <div class="plan__draw">
+        <svg viewBox="20 180 1170 455" role="img" aria-labelledby="planTitle">
+          <title id="planTitle">Plan de façade d'une maison qui s'équipe : menuiseries, volets roulants, pergola bioclimatique et portail</title>
+          <defs>
+            <pattern id="hatchStone" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" stroke="rgba(244,239,230,.08)" stroke-width="2"/></pattern>
+            <pattern id="slats" width="10" height="8" patternUnits="userSpaceOnUse"><line x1="0" y1="7.5" x2="10" y2="7.5" stroke="rgba(244,239,230,.75)" stroke-width="1.2"/></pattern>
+            <pattern id="gateSlats" width="10" height="12" patternUnits="userSpaceOnUse"><line x1="0" y1="11" x2="10" y2="11" stroke="currentColor" stroke-width="1.5"/></pattern>
+            <clipPath id="gateClip"><rect x="62" y="458" width="190" height="104"/></clipPath>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFB547" stop-opacity=".45"/><stop offset="1" stop-color="#FFB547" stop-opacity="0"/></radialGradient>
+            <radialGradient id="glowW" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#BFD6EA" stop-opacity=".4"/><stop offset="1" stop-color="#BFD6EA" stop-opacity="0"/></radialGradient>
+          </defs>
+
+          <!-- soleil, selon la saison -->
+          <g class="plan__summer-sun">
+            <circle class="sky-glow" cx="1110" cy="238" r="110" fill="url(#glow)"/>
+            <circle class="sun" cx="1110" cy="238" r="22"/>
+          </g>
+          <g class="plan__winter">
+            <circle cx="150" cy="330" r="130" fill="url(#glowW)"/>
+          </g>
+
+          <!-- sol et cotes -->
+          <line class="ln" x1="0" y1="560" x2="1200" y2="560"/>
+          <line class="ln-thin" x1="340" y1="600" x2="1180" y2="600"/>
+          <line class="ln-thin" x1="340" y1="592" x2="340" y2="608"/><line class="ln-thin" x1="720" y1="592" x2="720" y2="608"/><line class="ln-thin" x1="1180" y1="592" x2="1180" y2="608"/>
+          <text x="530" y="625" text-anchor="middle" fill="rgba(244,239,230,.55)" font-size="13" letter-spacing="2" font-family="Phudu, sans-serif">FAÇADE SUD · MAS GARDOIS</text>
+          <text x="950" y="625" text-anchor="middle" fill="rgba(244,239,230,.55)" font-size="13" letter-spacing="2" font-family="Phudu, sans-serif">TERRASSE</text>
+
+          <!-- murets et piliers du portail -->
+          <rect class="ln hatch" x="40" y="450" width="22" height="110"/>
+          <rect class="ln hatch" x="252" y="450" width="22" height="110"/>
+          <rect class="ln hatch" x="274" y="490" width="66" height="70"/>
+
+          <!-- corps principal -->
+          <rect class="ln hatch" x="340" y="380" width="380" height="180"/>
+          <polyline class="ln" points="326,386 530,330 734,386"/>
+          <line class="ln-thin" x1="340" y1="392" x2="720" y2="392"/>
+          <!-- tour en pierre -->
+          <rect class="ln hatch" x="840" y="250" width="170" height="310"/>
+          <polyline class="ln" points="828,256 925,205 1022,256"/>
+          <!-- volume blanc enduit -->
+          <rect class="ln" x="720" y="400" width="180" height="160" fill="#022A44"/>
+          <line class="ln-thin" x1="720" y1="410" x2="900" y2="410"/>
+          <!-- dalle terrasse -->
+          <rect class="ln" x="900" y="546" width="280" height="14" fill="rgba(244,239,230,.08)"/>
+
+          <!-- ═════ MENUISERIES ═════ -->
+          <g class="part" data-part="menuiseries">
+            <!-- anciennes ouvertures, pointillées -->
+            <g class="old">
+              <rect class="ln-old" x="400" y="428" width="70" height="92"/>
+              <rect class="ln-old" x="560" y="420" width="120" height="100"/>
+              <rect class="ln-old" x="740" y="446" width="140" height="114"/>
+              <rect class="ln-old" x="872" y="285" width="36" height="58"/>
+              <rect class="ln-old" x="950" y="285" width="36" height="58"/>
+            </g>
+            <g class="new">
+              <rect class="glass" x="404" y="432" width="62" height="84"/>
+              <rect class="glass" x="564" y="424" width="112" height="92"/>
+              <rect class="glass" x="744" y="450" width="132" height="110"/>
+              <rect class="glass" x="875" y="288" width="30" height="52"/>
+              <rect class="glass" x="953" y="288" width="30" height="52"/>
+              <path class="ln-new" pathLength="1" d="M400 428 h70 v92 h-70 z M435 428 v92"/>
+              <path class="ln-new" pathLength="1" d="M560 420 h120 v100 h-120 z M620 420 v100"/>
+              <path class="ln-new" pathLength="1" d="M740 446 h140 v114 h-140 z M810 446 v114 M776 500 h8 M836 500 h8"/>
+              <path class="ln-new" pathLength="1" d="M872 285 h36 v58 h-36 z"/>
+              <path class="ln-new" pathLength="1" d="M950 285 h36 v58 h-36 z"/>
+            </g>
+            <text class="tag" x="590" y="584">Menuiseries alu · PVC · bois</text>
+          </g>
+
+          <!-- ═════ VOLETS ROULANTS ═════ -->
+          <g class="part" data-part="volets">
+            <g class="coffres">
+              <rect x="398" y="414" width="74" height="13" fill="#022A44" class="ln"/>
+              <rect x="558" y="406" width="124" height="13" fill="#022A44" class="ln"/>
+            </g>
+            <rect class="tablier" data-h="92" x="400" y="427" width="70" height="92" fill="url(#slats)" style="transform-box: fill-box; transform-origin: top"/>
+            <rect class="tablier" data-h="100" x="560" y="419" width="120" height="100" fill="url(#slats)" style="transform-box: fill-box; transform-origin: top"/>
+            <g class="slatline">
+              <line class="slat" x1="400" y1="427" x2="470" y2="427"/>
+              <line class="slat" x1="560" y1="419" x2="680" y2="419"/>
+            </g>
+            <text class="tag" x="380" y="584">Volets roulants</text>
+          </g>
+
+          <!-- ═════ PERGOLA ═════ -->
+          <g class="part" data-part="pergola">
+            <g class="rays"></g>
+            <path class="ln-new" pathLength="1" d="M900 380 H1176 M1166 380 V546 M1010 380 V546 M900 392 H1176"/>
+            <g class="lames"></g>
+            <text class="tag" x="1176" y="362" text-anchor="end">Pergola bioclimatique</text>
+          </g>
+
+          <!-- ═════ PORTAIL ═════ -->
+          <g class="part" data-part="fermetures" style="color: rgba(244,239,230,.85)">
+            <g clip-path="url(#gateClip)">
+              <g class="gate">
+                <rect x="62" y="462" width="190" height="98" fill="url(#gateSlats)" stroke="currentColor" stroke-width="2"/>
+                <line x1="157" y1="462" x2="157" y2="560" stroke="currentColor" stroke-width="2"/>
+              </g>
+            </g>
+            <text class="tag" x="40" y="436">Portail coulissant</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="plan__side">
+        <h2 class="plan__title">La maison s'équipe sous votre main.</h2>
+        <div class="plan__steps">
+          <article class="step" data-step="menuiseries">
+            <h3>Menuiseries</h3>
+            <p>Fenêtres, baies et portes d'entrée sur mesure, en alu, PVC ou bois. Fabrication française, garantie 20 ans.</p>
+            <a class="link-arrow" href="https://ecobat-concept.fr/menuiserie">Voir les menuiseries</a>
+          </article>
+          <article class="step" data-step="volets">
+            <h3>Volets roulants</h3>
+            <p>Manuels, motorisés ou solaires, en rénovation comme en neuf. La pièce reste fraîche, la lumière se règle.</p>
+            <a class="link-arrow" href="https://ecobat-concept.fr/menuiserie/volet-roulant">Voir les volets</a>
+          </article>
+          <article class="step" data-step="pergola">
+            <h3>Pergola bioclimatique</h3>
+            <p>Les lames s'orientent pour l'ombre en été et laissent passer la lumière en hiver. Stores et vitrages intégrables.</p>
+            <a class="link-arrow" href="https://ecobat-concept.fr/protection-solaire/pergolas-bioclimatiques">Voir les pergolas</a>
+          </article>
+          <article class="step" data-step="fermetures">
+            <h3>Portails &amp; garages</h3>
+            <p>Portails battants ou coulissants, portes de garage enroulables ou sectionnelles, clôtures assorties.</p>
+            <a class="link-arrow" href="https://ecobat-concept.fr/fermeture">Voir les fermetures</a>
+          </article>
+          <article class="step" data-step="fin">
+            <h3>Et un seul interlocuteur.</h3>
+            <p>De la visite à domicile au service après-vente, la même équipe locale, sans sous-traitance.</p>
+            <a class="link-arrow" href="https://ecobat-concept.fr/contact">Devis gratuit</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="cartouche" aria-label="Cartouche du plan">
+        <div class="cartouche__row"><b>ECOBAT Concept</b><span>Brignon (30)</span></div>
+        <div class="cartouche__row"><b>Saison</b>
+          <span class="season" role="group" aria-label="Choisir la saison">
+            <button type="button" data-season-btn="ete" aria-pressed="true">Été</button>
+            <button type="button" data-season-btn="hiver" aria-pressed="false">Hiver</button>
+          </span>
+        </div>
+        <ol class="cartouche__list"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · PREUVES + QUI SOMMES-NOUS -->
+  <section class="proof">
+    <div class="wrap">
+      <div class="proof__grid" data-sc-in data-sc-stagger="70">
+        <div class="fig fig--big"><span class="fig__n" data-sc-count="0 263">263</span><p>réalisations présentées en images</p></div>
+        <div class="fig"><span class="fig__n"><span data-sc-count="0 18">18</span><small> ans</small></span><p>d'expérience, depuis 2008</p></div>
+        <div class="fig"><span class="fig__n">4,8<small>/5</small></span><p>sur <span data-sc-count="0 113">113</span> avis Google</p></div>
+        <div class="fig fig--small"><span class="fig__n">RGE</span><p>Qualibat, artisan certifié</p></div>
+      </div>
+
+      <div class="about">
+        <div class="about__img"><img data-sc-parallax="-0.9" src="assets/site/presentation.webp" width="800" height="643" alt="Showroom ECOBAT Concept à Brignon, menuiseries et fermetures exposées" loading="lazy"></div>
+        <div data-sc-in data-sc-stagger="70">
+          <h2 class="display">Qui sommes-nous ?</h2>
+          <p><strong>Spécialistes de la menuiserie, de la fermeture et de la protection solaire</strong> pour le neuf et la rénovation depuis 2008, nous sommes installés à Brignon, au cœur du Gard.</p>
+          <p>Nous intervenons autour de Nîmes, Alès et Uzès pour poser fenêtres, portes d'entrée, volets roulants, portails, pergolas bioclimatiques et stores extérieurs.</p>
+          <a class="link-arrow" href="https://ecobat-concept.fr/choisir-ecobat/la-societe">Découvrir la société</a>
+        </div>
+      </div>
+
+      <div class="strong-points" data-sc-in data-sc-stagger="60">
+        <div class="sp"><img src="assets/site/picto-france.webp" alt="" width="52" height="52" loading="lazy" onerror="this.remove()"><div><b>Produit français</b><span>sur les menuiseries</span></div></div>
+        <div class="sp"><img src="assets/site/picto-garantie.webp" alt="" width="52" height="52" loading="lazy" onerror="this.remove()"><div><b>Garantie 20 ans</b><span>sur les menuiseries</span></div></div>
+        <div class="sp"><img src="assets/site/picto-rge.webp" alt="" width="52" height="52" loading="lazy" onerror="this.remove()"><div><b>RGE Qualibat</b><span>partenaire économie d'énergie EDF</span></div></div>
+        <div class="sp"><img src="assets/site/picto-poseurs.webp" alt="" width="52" height="52" loading="lazy" onerror="this.remove()"><div><b>Poseurs certifiés</b><span>nos propres équipes</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · ACCOMPAGNEMENT -->
+  <section class="care dark">
+    <div class="wrap">
+      <div class="care__head" data-sc-in data-sc-stagger="70">
+        <h2 class="display">Du premier conseil au SAV.</h2>
+        <p>Visite à domicile, devis gratuit, aides financières et suivi après la pose : on vous accompagne à chaque étape.</p>
+      </div>
+      <div class="care__list">
+        <a class="care__item" href="https://ecobat-concept.fr/choisir-ecobat/votre-projet">
+          <div class="care__img" data-sc-reveal="up" data-sc-reveal-at="0.05 0.45"><img src="assets/site/service-votre-projet.webp" alt="Conseiller ECOBAT présentant un projet" width="648" height="800" loading="lazy"></div>
+          <h3>Votre projet, étape par étape</h3><q>Je sais comment ça va se passer</q><span class="link-arrow">Je découvre</span>
+        </a>
+        <a class="care__item" href="https://ecobat-concept.fr/choisir-ecobat/financements-et-aides">
+          <div class="care__img" data-sc-reveal="up" data-sc-reveal-at="0.12 0.52"><img src="assets/site/service-financement.webp" alt="Aides et financement" width="648" height="800" loading="lazy"></div>
+          <h3>Aides et financement</h3><q>On m'aide à financer et à monter mon dossier</q><span class="link-arrow">Je découvre</span>
+        </a>
+        <a class="care__item" href="https://ecobat-concept.fr/choisir-ecobat/la-societe">
+          <div class="care__img" data-sc-reveal="up" data-sc-reveal-at="0.19 0.59"><img src="assets/site/service-showroom.webp" alt="Showroom de Brignon" width="648" height="800" loading="lazy"></div>
+          <h3>Conseil en showroom</h3><q>Je peux voir et toucher avant de décider</q><span class="link-arrow">Je découvre</span>
+        </a>
+        <a class="care__item" href="https://ecobat-concept.fr/choisir-ecobat/garanties">
+          <div class="care__img" data-sc-reveal="up" data-sc-reveal-at="0.26 0.66"><img src="assets/site/service-sav.webp" alt="Service après-vente" width="200" height="400" loading="lazy"></div>
+          <h3>Service après-vente</h3><q>On reste à mes côtés après la pose</q><span class="link-arrow">Je découvre</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · RÉALISATIONS : fiches chantier en défilé -->
+  <section class="works" data-sc-act="pan" data-sc-span="4.2">
+    <div data-sc-stage>
+      <div class="rail" data-sc-pan="0.04">
+        <div class="rail__lead">
+          <h2 class="display">Près de chez vous.</h2>
+          <p>Nos derniers chantiers dans le Gard et l'Hérault, photographiés après la pose.</p>
+        </div>
+        <a class="fiche" style="--i:0" href="https://ecobat-concept.fr/realisations/pergolas/moussac-pergola-b720-vitrages-lames-orientables"><div class="fiche__img"><img src="assets/site/moussac-pergola-b720-vitrages-lames-orientables-16.webp" alt="Pergola bioclimatique B720 à Moussac" width="1152" height="768" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Moussac</dd><dt>Produit</dt><dd>Pergola bioclimatique B720</dd><dt>Détail</dt><dd>Vitrages et store intégré</dd></dl></a>
+        <a class="fiche" style="--i:1" href="https://ecobat-concept.fr/realisations/realisations-fenetres/pont-de-monvert-menuiseries-alu-maison-neuve"><div class="fiche__img"><img src="assets/site/pont-de-monvert-menuiseries-alu-maison-neuve-04.webp" alt="Menuiseries aluminium sur maison neuve au Pont-de-Montvert" width="1600" height="1200" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Pont-de-Montvert</dd><dt>Produit</dt><dd>Menuiseries aluminium</dd><dt>Détail</dt><dd>Maison neuve</dd></dl></a>
+        <a class="fiche" style="--i:2" href="https://ecobat-concept.fr/realisations/portes-entree-pvc/fons-portes-entree-pvc-volets-battants"><div class="fiche__img"><img src="assets/site/fons-portes-entree-pvc-volets-battants.webp" alt="Portes d'entrée PVC et volets aluminium à Fons" width="1088" height="1200" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Fons</dd><dt>Produit</dt><dd>Portes d'entrée PVC</dd><dt>Détail</dt><dd>Volets aluminium</dd></dl></a>
+        <a class="fiche" style="--i:3" href="https://ecobat-concept.fr/realisations/pergolas/montignargues-installation-screen-zip"><div class="fiche__img"><img src="assets/site/montignargues-installation-screen-zip.webp" alt="Screen ZIP sur pergola à Montignargues" width="900" height="1200" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Montignargues</dd><dt>Produit</dt><dd>Screen ZIP</dd><dt>Détail</dt><dd>Sur pergola</dd></dl></a>
+        <a class="fiche" style="--i:4" href="https://ecobat-concept.fr/realisations/carports/jacou-carport-aluminium-sur-mesure"><div class="fiche__img"><img src="assets/site/jacou-carport-aluminium-sur-mesure.webp" alt="Carport aluminium anthracite à Jacou" width="900" height="1200" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Jacou</dd><dt>Produit</dt><dd>Carport aluminium</dd><dt>Détail</dt><dd>Anthracite, paroi sur mesure</dd></dl></a>
+        <a class="fiche" style="--i:5" href="https://ecobat-concept.fr/realisations/realisations-rideaux-grilles/nages-et-solorgues-verriere-coulissante-cuisine-salon"><div class="fiche__img"><img src="assets/site/nages-et-solorgues-verriere-coulissante-cuisine-salon.webp" alt="Verrière coulissante entre cuisine et salon à Nages-et-Solorgues" width="1600" height="1200" loading="lazy"></div><dl class="fiche__label"><dt>Commune</dt><dd class="commune">Nages-et-Solorgues</dd><dt>Produit</dt><dd>Verrière coulissante</dd><dt>Détail</dt><dd>Entre cuisine et salon</dd></dl></a>
+        <div class="rail__end">
+          <span class="fig__n">263</span>
+          <p>chantiers à parcourir, classés par produit.</p>
+          <a class="link-arrow" href="https://ecobat-concept.fr/realisations">Voir toutes les réalisations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · AVIS + PARTENAIRES -->
+  <section class="voices dark">
+    <div class="wrap">
+      <div class="voices__top">
+        <div class="score" data-sc-in>
+          <span class="fig__n">4,8<small>/5</small></span>
+          <p>sur 113 avis Google</p>
+          <a class="link-arrow" href="https://ecobat-concept.fr/choisir-ecobat/temoignages">Voir tous les avis</a>
+        </div>
+        <div class="reviews" data-sc-in data-sc-stagger="80">
+          <article class="review"><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>Nous sommes très satisfaits du travail rapide, propre et compétent de toute l'équipe d'Ecobat et pouvons recommander Ecobat sans réserve. Nous avons fait remplacer les volets en bois de notre maison par des volets en aluminium.</blockquote><footer><b>Jens Götze</b><span>25/10/2026 · avis traduit de l'allemand</span></footer></article>
+          <article class="review"><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>Nous venons de faire poser les portes et fenêtres pour notre future maison, nous tenions à témoigner que nous sommes ravis du professionnalisme et conseil qui s'est avéré très très utile.</blockquote><footer><b>Isabelle Albaric</b><span>16/10/2026 · <a href="https://ecobat-concept.fr/realisations/realisations-fenetres/pont-de-monvert-menuiseries-alu-maison-neuve">voir la réalisation</a></span></footer></article>
+          <article class="review"><span class="stars" aria-label="5 étoiles sur 5">★★★★★</span><blockquote>Un travail de qualité et une équipe réactive.</blockquote><footer><b>Victoria Grace</b><span>12/10/2026 · <a href="https://ecobat-concept.fr/realisations/portes-entree-pvc/fons-portes-entree-pvc-volets-battants">voir la réalisation</a></span></footer></article>
+        </div>
+      </div>
+      <div class="partners" data-sc-in data-sc-stagger="50">
+        <h2>Ils nous font confiance</h2>
+        <img src="assets/site/partenaire-1.webp" alt="RGE Éco Artisan" width="177" height="150" loading="lazy">
+        <img src="assets/site/partenaire-2.webp" alt="Garantie 20 ans sur les menuiseries" width="150" height="150" loading="lazy">
+        <img src="assets/site/partenaire-qualibat.webp" alt="Qualibat, artisan certifié RGE" width="123" height="150" loading="lazy">
+        <img src="assets/site/partenaire-4.webp" alt="CAPEB Gard, l'artisanat du bâtiment" width="364" height="150" loading="lazy">
+        <img src="assets/site/partenaire-eco.webp" alt="Conseil Éco Rénovation" width="261" height="150" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉS -->
+  <section class="news">
+    <div class="wrap">
+      <div class="news__head" data-sc-in>
+        <h2 class="display">Actualités</h2>
+        <a class="link-arrow" href="https://ecobat-concept.fr/blog">Voir toutes les actualités</a>
+      </div>
+      <div class="news__grid" data-sc-in data-sc-stagger="70">
+        <a class="post" href="https://ecobat-concept.fr/blog"><div class="post__img"><img src="assets/site/bagard-volets-battants-rouges.webp" alt="Volets battants rouges à Bagard" width="1600" height="1200" loading="lazy"></div><h3>Préparer sa maison pour l'hiver dans le Gard : 5 points à vérifier</h3></a>
+        <a class="post" href="https://ecobat-concept.fr/blog"><div class="post__img"><img src="assets/site/blog-menuiserie.webp" alt="Fenêtre PVC" width="1200" height="860" loading="lazy"></div><h3>Fenêtre PVC : pourquoi isole-t-elle si bien ?</h3></a>
+        <a class="post" href="https://ecobat-concept.fr/blog"><div class="post__img"><img src="assets/site/portes-entree.webp" alt="Portes d'entrée" width="1620" height="645" loading="lazy"></div><h3>Porte d'entrée : alu, PVC, acier ou bois, que choisir ?</h3></a>
+        <a class="post" href="https://ecobat-concept.fr/blog"><div class="post__img"><img src="assets/site/etude-de-cas-sujet-court-moussac.webp" alt="Pergola à Moussac" width="1536" height="1024" loading="lazy"></div><h3>Pergola à Moussac : ombre en été, lumière en hiver</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap faq__grid">
+      <h2 class="display">Vos questions</h2>
+      <div data-sc-in data-sc-stagger="50">
+        <details><summary>Quels types de travaux réalisez-vous dans le Gard ?</summary><p>ECOBAT Concept conçoit et pose sur mesure tout ce qui touche à la menuiserie (fenêtres, portes d'entrée, baies vitrées), à la fermeture (volets roulants et battants, portails, portes de garage) et à la protection solaire (stores bannes, pergolas bioclimatiques). En rénovation comme en construction neuve, avec des produits de fabrication française posés par nos propres équipes.</p></details>
+        <details><summary>Où intervenez-vous autour de Nîmes, Alès et Uzès ?</summary><p>Notre showroom est situé à Brignon (30190), au cœur du Gard. Nos équipes interviennent au quotidien à Nîmes, Alès, Uzès, Anduze et dans les communes alentour. Le déplacement pour la prise de mesures est gratuit dans tout le département.</p></details>
+        <details><summary>Comment se passe un projet, du premier contact à la pose ?</summary><p>En quatre étapes : une visite technique gratuite à votre domicile, un devis détaillé sans engagement, la fabrication sur mesure par nos fabricants partenaires français, puis la pose par nos propres équipes, sans sous-traitance. Un seul interlocuteur du début à la fin, et un SAV local après le chantier.</p></details>
+        <details><summary>Mes travaux peuvent-ils bénéficier d'aides financières ?</summary><p>Oui, selon votre projet : MaPrimeRénov', les primes CEE, l'éco-PTZ et la TVA réduite à 5,5 % peuvent s'appliquer aux menuiseries et volets isolants. Ces aides exigent un installateur certifié RGE : ECOBAT Concept est certifié RGE Qualibat et vous accompagne dans les démarches.</p></details>
+        <details><summary>En combien de temps mes menuiseries sont-elles posées ?</summary><p>La fabrication sur mesure demande en général 4 à 8 semaines entre la signature du devis et la pose, selon le produit et la saison. La pose elle-même est rapide : souvent une seule journée pour des fenêtres ou des volets.</p></details>
+        <details><summary>Pourquoi confier votre projet à ECOBAT Concept ?</summary><p>18 ans d'expérience locale, 263 réalisations présentées en images, une note de 4,8/5 sur plus de 100 avis Google et la certification RGE Qualibat. Vos installations sont couvertes par les garanties fabricants et notre garantie de pose, avec un SAV basé dans le Gard.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · LE BON DE DEVIS -->
+  <section class="close" id="devis" data-sc-act="pin" data-sc-span="1.2">
+    <div data-sc-stage>
+      <div class="bon">
+        <h2 data-sc-cue="0 1 0 0">Votre maison, on s'en occupe.</h2>
+        <div class="bon__form" data-sc-cue="0 1 0 0">
+          <div class="bon__row"><b>Visite à domicile</b><span>gratuite</span></div>
+          <div class="bon__row"><b>Devis</b><span>gratuit, sans engagement</span></div>
+          <div class="bon__row"><b>Délai de pose actuel</b><span>4 à 8 semaines</span></div>
+          <div class="bon__row"><b>Mis à jour le</b><span>11/10/2026</span></div>
+          <a class="btn" href="https://ecobat-concept.fr/contact" data-sc-magnet="0.22">Devis gratuit</a>
+          <a class="bon__tel" href="tel:0466306953">04 66 30 69 53</a>
+        </div>
+      </div>
+      <footer class="foot">
+        <span>ECOBAT Concept · Brignon (30190) · Gard</span>
+        <nav aria-label="Réseaux sociaux">
+          <a href="https://www.facebook.com/ecobatconcept/">Facebook</a>
+          <a href="https://www.instagram.com/ecobat/">Instagram</a>
+          <a href="https://www.linkedin.com/company/ecobat-concept/">LinkedIn</a>
+          <a href="https://www.youtube.com/channel/UChPwAuGfa642UDxb3BYWfcw">YouTube</a>
+        </nav>
+        <a href="https://ecobat-concept.fr/faq">FAQ</a>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* ── Signature : le plan de pose ──────────────────────────────────────────
+   La progression de l'acte (--sc-p, publiée par le moteur) pilote la pose de
+   chaque produit. L'ordre suit la saison : été = pergola d'abord, hiver =
+   menuiseries d'abord. ?saison=ete|hiver force l'aperçu. */
+(function () {
+  var act = document.getElementById('plan');
+  if (!act) return;
+  var svg = act.querySelector('svg');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  // lames et rayons de la pergola
+  var lamesG = svg.querySelector('.lames'), raysG = svg.querySelector('.rays');
+  var lames = [], rays = [];
+  for (var x = 912; x <= 1160; x += 18) {
+    var r = document.createElementNS(NS, 'rect');
+    r.setAttribute('class', 'lame'); r.setAttribute('x', x - 7); r.setAttribute('y', 384); r.setAttribute('width', 14); r.setAttribute('height', 4);
+    r.style.transformBox = 'fill-box'; r.style.transformOrigin = 'center';
+    lamesG.appendChild(r); lames.push(r);
+    var l = document.createElementNS(NS, 'line');
+    l.setAttribute('class', 'ray'); l.setAttribute('x1', x + 9 + 60); l.setAttribute('y1', 300); l.setAttribute('x2', x + 9 - 70); l.setAttribute('y2', 545);
+    raysG.appendChild(l); rays.push(l);
+  }
+
+  var parts = {};
+  svg.querySelectorAll('.part').forEach(function (g) { parts[g.dataset.part] = g; });
+  var steps = {};
+  act.querySelectorAll('.step').forEach(function (s) { steps[s.dataset.step] = s; });
+  var list = act.querySelector('.cartouche__list');
+  var NAMES = { menuiseries: 'Menuiseries', volets: 'Volets roulants', pergola: 'Pergola', fermetures: 'Portails' };
+  var ORDERS = { ete: ['pergola', 'volets', 'menuiseries', 'fermetures'], hiver: ['menuiseries', 'volets', 'pergola', 'fermetures'] };
+
+  var q = new URLSearchParams(location.search).get('saison');
+  var m = new Date().getMonth(); // 0 = janvier
+  var season = (q === 'ete' || q === 'hiver') ? q : (m >= 2 && m <= 7 ? 'ete' : 'hiver');
+  var order, items = {};
+
+  function setSeason(s) {
+    season = s; order = ORDERS[s];
+    act.dataset.season = s;
+    act.querySelectorAll('[data-season-btn]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.seasonBtn === s)); });
+    // ordre de lecture = ordre de pose
+    var host = act.querySelector('.plan__steps');
+    order.forEach(function (n) { host.insertBefore(steps[n], steps.fin); });
+    list.innerHTML = '';
+    order.forEach(function (n) { var li = document.createElement('li'); li.innerHTML = '<i></i>' + NAMES[n]; list.appendChild(li); items[n] = li; });
+    last = -1;
+  }
+
+  var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+  var B = [0.05, 0.25, 0.45, 0.65, 0.84]; // bornes des 4 poses, puis la fin
+
+  var apply = {
+    menuiseries: function (t) {
+      var g = parts.menuiseries;
+      g.querySelector('.old').style.opacity = 1 - clamp(t * 1.4);
+      g.querySelectorAll('.ln-new').forEach(function (p, i) { p.style.strokeDashoffset = 1 - ease(clamp(t * 1.5 - i * 0.1)); });
+      g.querySelectorAll('.glass').forEach(function (p) { p.style.opacity = 0.55 * clamp((t - 0.45) / 0.55); });
+    },
+    volets: function (t) {
+      var g = parts.volets, e = ease(clamp(t * 1.15));
+      g.querySelector('.coffres').style.opacity = clamp(t * 5);
+      g.querySelectorAll('.tablier').forEach(function (r) { r.style.transform = 'scaleY(' + (e * 0.72).toFixed(4) + ')'; });
+      g.querySelectorAll('.slat').forEach(function (l, i) { var h = +g.querySelectorAll('.tablier')[i].dataset.h; l.style.transform = 'translateY(' + (e * 0.72 * h).toFixed(2) + 'px)'; l.style.opacity = t > 0 ? 1 : 0; });
+    },
+    pergola: function (t) {
+      var g = parts.pergola;
+      g.querySelector('.ln-new').style.strokeDashoffset = 1 - ease(clamp(t / 0.35));
+      var a = 90 - 72 * ease(clamp((t - 0.35) / 0.65)); // 90° ouvert, 18° quasi fermé
+      lames.forEach(function (r, i) { r.style.opacity = clamp((t - 0.25 - i * 0.008) * 8); r.style.transform = 'rotate(' + a.toFixed(1) + 'deg)'; });
+      var light = t < 0.3 ? 0 : (a / 90) * (season === 'ete' ? 0.55 : 0.35);
+      rays.forEach(function (l) { l.style.opacity = light.toFixed(3); });
+    },
+    fermetures: function (t) {
+      parts.fermetures.querySelector('.gate').style.transform = 'translateX(' + (-188 * (1 - ease(t))).toFixed(1) + 'px)';
+    }
+  };
+
+  var last = -1;
+  function render(p) {
+    if (reduce) p = 1;
+    if (Math.abs(p - last) < 0.0005) return; last = p;
+    var activeStep = p >= B[4] ? 'fin' : null;
+    order.forEach(function (n, i) {
+      var t = clamp((p - B[i]) / (B[i + 1] - B[i]));
+      apply[n](t);
+      parts[n].classList.toggle('is-active', t > 0 && t < 1);
+      parts[n].classList.toggle('is-done', t >= 1);
+      items[n].classList.toggle('is-done', t >= 1);
+      if (!activeStep && p < B[i + 1]) activeStep = n;
+    });
+    if (p < B[0]) activeStep = order[0];
+    Object.keys(steps).forEach(function (k) { steps[k].classList.toggle('is-on', k === activeStep); });
+    focusOn(activeStep);
+  }
+
+  // Sur téléphone, le plan zoome sur l'élément en cours de pose, puis dézoome à la fin.
+  var FOCUS = { menuiseries: 640, volets: 540, pergola: 1030, fermetures: 170 };
+  var narrow = matchMedia('(max-width: 900px)'), lastFocus = null;
+  function focusOn(step) {
+    var key = narrow.matches && !reduce ? step : 'fin';
+    if (key === lastFocus) return; lastFocus = key;
+    if (key === 'fin' || !(key in FOCUS)) { svg.style.transform = 'none'; return; }
+    var Z = 2.1, vbX = 20, vbW = 1170, cx = (FOCUS[key] - vbX) / vbW; // 0..1
+    var tx = Math.min(0, Math.max(-(Z - 1), 0.5 - cx * Z)) * 100;
+    svg.style.transform = 'translateX(' + tx.toFixed(2) + '%) scale(' + Z + ')';
+  }
+  narrow.addEventListener('change', function () { lastFocus = null; last = -1; });
+
+  setSeason(season);
+  act.querySelectorAll('[data-season-btn]').forEach(function (b) {
+    b.addEventListener('click', function () { setSeason(b.dataset.seasonBtn); render(parseFloat(act.style.getPropertyValue('--sc-p')) || 0); });
+  });
+
+  function loop() {
+    render(parseFloat(act.style.getPropertyValue('--sc-p')) || 0);
+    requestAnimationFrame(loop);
+  }
+  render(0);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
